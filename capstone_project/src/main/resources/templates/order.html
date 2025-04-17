@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Order Confirmation</title>
+</head>
+<body>
+
+
+  <h2>Congratulations.....!! your order is placed</h2>
+
+
+<!-- Back to home -->
+<a th:href="@{/ecommerce/catalog/home(storeType=${catalogs})}"  style="display: inline-block; margin: 20px; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+  ← Back to Home
+</a>
+</body>
+</html>
