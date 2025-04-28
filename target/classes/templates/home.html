@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Store Catalog</title>
+    <style>
+        .catalog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .catalog-card {
+            border: 1px solid #ccc;
+            padding: 16px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .catalog-card:hover {
+            background-color: #eef;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Choose a Store</h1>
+<div class="catalog-container">
+    <div class="catalog-card" th:each="catalog : ${catalogs}">
+        <a th:href="@{product-by-store-type(storeType=${catalog.storeType})}" style="text-decoration: none; color: inherit;">
+        <h3 th:text="${catalog.storeType}">Store Name</h3>
+    </div>
+</div>
+</body>
+</html>

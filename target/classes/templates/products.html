@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+    <style>
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ccc;
+            padding: 16px;
+            border-radius: 10px;
+            width: 250px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">
+    Products for <span th:text="${catalogType}">Type</span>
+</h1>
+<div class="product-container">
+    <div class="product-card" th:each="product : ${product}">
+        <h3 th:text="${product.productName}">Product Name</h3>
+        <p th:text="${product.ProductDescription}">Description</p>
+        <p>
+            <strong>Price:</strong> ₹<span th:text="${product.productPrice}">0</span>
+        </p>
+        <form th:action="@{/ecommerce/product/add-to-cart}" method="post">
+            <input type="hidden" name="productId" th:value="${product.productId}" />
+            <button type="submit">Add to Cart</button>
+        </form>
+    </div>
+</div>
+<a th:href="@{/ecommerce/catalog/home(storeType=${catalogs})}"  style="display: inline-block; margin: 20px; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+    ← Back to Home
+</a>
+</body>
+</html>
